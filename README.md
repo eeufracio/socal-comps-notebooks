@@ -10,6 +10,13 @@ broker outreach, deal activity, and competitive positioning by market.
 ## What it does
 
 - Ingests one or more CoStar sale-comps exports (`.xlsx`) and combines them into a single dataset.
+- Optionally ingests CoStar lease-comp PDF report(s) too — parsed automatically (address, building,
+  lease economics, tenant, and broker contacts) and merged into the same universes as sale deals,
+  tagged with a **Deal Type** column. Leasing Company → Listing credit, Tenant Representative → Buyer
+  credit; Landlord is captured but never credited (property owner, not a broker). Lease $ volume =
+  Annual Rent × Term; when Term isn't disclosed (common in real CoStar exports), a median Term for
+  that universe is estimated so a $ figure is still computable, flagged the same way imputed sale
+  prices are (**Price Basis: Estimated/Disclosed**).
 - Auto-classifies every deal into a property-type **universe**: Industrial, Multifamily, Retail, and
   Office each keyword-group (any CoStar subtype or parenthetical — e.g. `Retail (Strip Center)`,
   `Office (CBD)` — collapses into the base type). Every other type (Flex, Land, Hospitality, ...)
@@ -38,7 +45,8 @@ pip install -r requirements.txt
 
 1. Open the notebook in Colab and run **Runtime → Run all**.
 2. When prompted, upload (you can select several files at once):
-   - **CoStar export(s)** (`.xlsx`) — required, one or more (e.g. per city/region).
+   - **CoStar sale-comps export(s)** (`.xlsx`) — required, one or more (e.g. per city/region).
+   - **CoStar lease-comp report(s)** (`.pdf`) — optional, one or more.
    - **Last week's `broker_recruiting_ledger.csv`** — carries deal history forward (skip on first run).
    - **Last week's marked-up scorecard** (`Broker_Recruiting_Scorecard.xlsx`) — carries the director's
      Status/Contacted/Notes forward (skip on first run).
@@ -54,21 +62,4 @@ If a download doesn't start automatically, use the Colab **Files panel** (left s
 ```
 .
 ├── Broker_Recruiting_Scorecardv01.ipynb   # the notebook — config, engine, and run cells
-├── requirements.txt                       # Python dependencies
-├── LICENSE                                # proprietary — all rights reserved
-└── .github/                               # issue/PR templates
-```
-
-Note: CoStar exports, generated scorecards, and ledger files are **never committed** to this repo —
-see `.gitignore`. They contain broker contact information and should stay local or in your own
-storage, not in git history.
-
-## Contributing / workflow
-
-This repo tracks work as GitHub Issues, one feature branch per issue, merged into `main` via PR. See
-[CONTRIBUTING.md](CONTRIBUTING.md) for the full convention.
-
-## License
-
-Proprietary — all rights reserved. See [LICENSE](LICENSE). This tool is for internal use by Foremost
-Commercial Real Estate only.
+├── requirements.txt                       # Pyt

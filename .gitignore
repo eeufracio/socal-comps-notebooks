@@ -1,0 +1,27 @@
+# --- CoStar exports & generated outputs (contain broker PII — never commit) ---
+CostarExport*.xlsx
+CostarExport*.csv
+Broker_Recruiting_Scorecard*.xlsx
+broker_recruiting_ledger*.csv
+*.xlsx
+*.xls
+!/*.xlsx.example
+
+# --- Jupyter / Colab ---
+.ipynb_checkpoints/
+*-checkpoint.ipynb
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.env
+.env.*
+
+# --- OS / editor cruft ---
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

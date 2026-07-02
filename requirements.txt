@@ -1,0 +1,12 @@
+# Core dependencies for Broker_Recruiting_Scorecardv01.ipynb
+pandas>=2.0
+numpy>=1.24
+openpyxl>=3.1
+
+# Note: the file-upload cell (Cell 2 — "Upload your file(s)") uses
+# `google.colab.files`, which is only available inside Google Colab and
+# is not installable via pip. To run this notebook outside Colab, replace
+# that upload cell with local file paths (e.g. pd.read_excel("path.xlsx"))
+# and skip the google.colab import — the rest of the pipeline
+# (classify_asset, build_credits, build_workbook, etc.) has no Colab
+# dependency and runs anywhere with the packages above installed.

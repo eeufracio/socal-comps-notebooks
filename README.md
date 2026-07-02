@@ -1,4 +1,4 @@
-# Broker Recruiting Scorecard — CoStar Sale Comps
+# Broker Recruiting Scorecard — CoStar Sale & Lease Comps
 
 Internal tool for Foremost Commercial Real Estate. Turns weekly CoStar sale-comps exports into a
 recruiting scorecard: an auto-scored, auto-organized Excel workbook the sales director uses to track
